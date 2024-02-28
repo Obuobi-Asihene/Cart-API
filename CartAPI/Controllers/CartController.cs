@@ -32,5 +32,23 @@ namespace CartAPI.Controllers
             return Ok(cartItems);
         }
 
+        //update cart item
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCartItem(Cart cartItem, int id)
+        {
+            var existingCartItem = await _cartDbContext.Carts.FindAsync(id);
+            if (existingCartItem == null)
+            {
+                return NotFound();
+            }
+
+            existingCartItem.ItemName = cartItem.ItemName;
+            existingCartItem.Quantity = cartItem.Quantity;
+            existingCartItem.UnitPrice = cartItem.UnitPrice;
+
+            await _cartDbContext.SaveChangesAsync();
+            return View(existingCartItem);
+            
+        }
     }
 }
