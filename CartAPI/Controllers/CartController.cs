@@ -62,5 +62,20 @@ namespace CartAPI.Controllers
             return View(existingCartItem);
             
         }
+
+        //delete cart item
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCartItem(int id)
+        {
+            var cartItem = await _cartDbContext.Carts.FindAsync(id);
+            if (cartItem == null)
+            {
+                return NotFound();
+            }
+
+            _cartDbContext.Carts.Remove(cartItem);
+            await _cartDbContext.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }
