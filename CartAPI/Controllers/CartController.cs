@@ -32,6 +32,18 @@ namespace CartAPI.Controllers
             return Ok(cartItems);
         }
 
+        //get item by id
+        [HttpGet("{id}")]
+        public IActionResult GetItemById(int id)
+        {
+            var cartItem = _cartDbContext.Carts.FirstOrDefault(c => c.ItemId == id);
+            if (cartItem == null)
+            {
+                return NotFound();
+            }
+            return Ok(cartItem);
+        }
+
         //update cart item
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCartItem(Cart cartItem, int id)
