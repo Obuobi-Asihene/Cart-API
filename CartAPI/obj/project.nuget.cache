@@ -1,15 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "21j0zZzWSTlufP8YLGxsWqmN/pTYpuUGdpfBhmjh7KNNGAnAQgVI863sSGgTgsFZaiBTQpE8eVCVFV5Sp9apmQ==",
+  "dgSpecHash": "faZ/sGV0i+BDeejmYL2LQKRqv+G5MYgaQXW3gZw/ppl+eqRXUuDmkZ6Wb4chDtxxZcU+8mL0Ur/g4ZOkqV0/Kg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Yakubu\\source\\repos\\CartAPI\\CartAPI\\CartAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Yakubu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
     "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.0\\microsoft.entityframeworkcore.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.0\\microsoft.entityframeworkcore.analyzers.6.0.0.nupkg.sha512",
+    "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.0\\microsoft.entityframeworkcore.design.6.0.0.nupkg.sha512",
     "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.0\\microsoft.entityframeworkcore.relational.6.0.0.nupkg.sha512",
     "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.0\\microsoft.entityframeworkcore.sqlserver.6.0.0.nupkg.sha512",
     "C:\\Users\\Yakubu\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

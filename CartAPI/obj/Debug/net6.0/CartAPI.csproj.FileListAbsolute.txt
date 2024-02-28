@@ -62,3 +62,5 @@ C:\Users\Yakubu\source\repos\CartAPI\CartAPI\obj\Debug\net6.0\refint\CartAPI.dll
 C:\Users\Yakubu\source\repos\CartAPI\CartAPI\obj\Debug\net6.0\CartAPI.pdb
 C:\Users\Yakubu\source\repos\CartAPI\CartAPI\obj\Debug\net6.0\CartAPI.genruntimeconfig.cache
 C:\Users\Yakubu\source\repos\CartAPI\CartAPI\obj\Debug\net6.0\ref\CartAPI.dll
+C:\Users\Yakubu\source\repos\CartAPI\CartAPI\bin\Debug\net6.0\Humanizer.dll
+C:\Users\Yakubu\source\repos\CartAPI\CartAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
