@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CartAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CartAPI.Data
 {
@@ -8,7 +9,7 @@ namespace CartAPI.Data
         {
         }
 
-        public DbSet<CartDbContext> DbSet { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
