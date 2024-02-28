@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CartAPI.Controllers
 {
+    [Route("/")]
+    [ApiController]
     public class CartController : Controller
     {
         private readonly CartDbContext _cartDbContext;
@@ -13,7 +15,7 @@ namespace CartAPI.Controllers
         }
 
         //Add cart item
-        [HttpPost]
+        [HttpPost("/AddCartItem")]
         public async Task<IActionResult> AddCartItem(Cart cartItem)
         {
             _cartDbContext.Carts.Add(cartItem);
@@ -22,8 +24,8 @@ namespace CartAPI.Controllers
             return View(cartItem);
         }
 
-        // get cart item
-        [HttpGet]
+        // get cart items
+        [HttpGet("/GetCartItems")]
         public IActionResult GetCarItems()
         {
             var cartItems = _cartDbContext.Carts.ToList();
@@ -31,7 +33,7 @@ namespace CartAPI.Controllers
         }
 
         //get item by id
-        [HttpGet("{id}")]
+        [HttpGet("/GetCartItemById/{id}")]
         public IActionResult GetItemById(int id)
         {
             var cartItem = _cartDbContext.Carts.FirstOrDefault(c => c.ItemId == id);
@@ -43,7 +45,7 @@ namespace CartAPI.Controllers
         }
 
         //update cart item
-        [HttpPut("{id}")]
+        [HttpPut("/UpdateCartItem/{id}")]
         public async Task<IActionResult> UpdateCartItem(Cart cartItem, int id)
         {
             var existingCartItem = await _cartDbContext.Carts.FindAsync(id);
@@ -62,7 +64,7 @@ namespace CartAPI.Controllers
         }
 
         //delete cart item
-        [HttpDelete("{id}")]
+        [HttpDelete("/DeleteCartItem/{id}")]
         public async Task<IActionResult> DeleteCartItem(int id)
         {
             var cartItem = await _cartDbContext.Carts.FindAsync(id);
