@@ -13,7 +13,7 @@ namespace CartAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CartDbContext>();
+            modelBuilder.Entity<Cart>().HasKey(c => c.ItemId);
         }
     }
 }
