@@ -1,6 +1,8 @@
 ﻿using CartAPI.Data;
 using CartAPI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace CartAPI.Controllers
 {
@@ -22,6 +24,13 @@ namespace CartAPI.Controllers
             return View(cartItem);
         }
 
-       
+        // get cart item
+        [HttpGet]
+        public IActionResult GetCarItems()
+        {
+            var cartItems = _cartDbContext.Carts.ToList();
+            return Ok(cartItems);
+        }
+
     }
 }
