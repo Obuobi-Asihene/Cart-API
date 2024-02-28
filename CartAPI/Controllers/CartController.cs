@@ -1,6 +1,7 @@
 ﻿using CartAPI.Data;
 using CartAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CartAPI.Controllers
 {
@@ -14,14 +15,26 @@ namespace CartAPI.Controllers
             _cartDbContext = cartDbContext;
         }
 
-        //Add cart item
-        [HttpPost("/AddCartItem")]
-        public async Task<IActionResult> AddCartItem(Cart cartItem)
+        //Add or Update cart item
+        [HttpPost("/AddorUpdateCartItem")]
+        public async Task<IActionResult> AddorUpdateCartItem(Cart cartItem)
         {
-            _cartDbContext.Carts.Add(cartItem);
-            await _cartDbContext.SaveChangesAsync();
+            if (cartItem != null)
+            {
+                var existingCartItem = await _cartDbContext.Carts.FirstOrDefaultAsync(c => c.ItemId == cartItem.ItemId);
+                if (existingCartItem != null)
+                {
+                    existingCartItem.Quantity += cartItem.Quantity;
+                }
 
-            return View(cartItem);
+                _cartDbContext.Carts.Add(cartItem);
+                await _cartDbContext.SaveChangesAsync();
+                return View(cartItem);
+            }
+            else
+            {
+                return BadRequest("Cart item cannot be null");
+            }  
         }
 
         // get cart items
