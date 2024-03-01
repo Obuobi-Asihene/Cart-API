@@ -13,7 +13,17 @@ namespace CartAPI.Services
         }
         public void AddCartItem(Cart item)
         {
-            _cartDbContext.Carts.Add(item);
+            var existingItem = _cartDbContext.Carts.FirstOrDefault(c => c.ItemId == item.ItemId);
+            if (existingItem != null)
+            {
+                existingItem.Quantity += item.Quantity;
+                _cartDbContext.Carts.Update(existingItem);
+            }
+            else
+            {
+                _cartDbContext.Carts.Add(item);
+
+            }
             _cartDbContext.SaveChanges();
         }
 
