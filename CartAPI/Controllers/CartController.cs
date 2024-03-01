@@ -19,7 +19,7 @@ namespace CartAPI.Controllers
         public IActionResult AddcartItem(Cart cartItem)
         {
             _cartService.AddCartItem(cartItem);
-            return View(cartItem);
+            return Ok(cartItem);
         }
 
         //remove cart item
