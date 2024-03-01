@@ -1,4 +1,6 @@
 using CartAPI.Data;
+using CartAPI.Services;
+using CartAPI.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<CartDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddScoped<ICartService, CartService>();
 
 var app = builder.Build();
 
