@@ -58,7 +58,7 @@ namespace CartAPI.Controllers
 
             var filterCartItems = _filterService.FilterCartItems(cartItems, phoneNumber, CreatedAt, Quantity, item);                                              
             
-            return Ok(cartItems);
+            return Ok(filterCartItems);
         }
     }
 }
