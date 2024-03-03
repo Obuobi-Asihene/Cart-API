@@ -14,10 +14,8 @@ namespace CartAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cart>()
-                .HasOne(c => c.Item)
-                .WithOne(i => i.Cart)
-                .HasForeignKey<Cart>(c => c.ItemId);
+            modelBuilder.Entity<Cart>();
+            modelBuilder.Entity<Item>();
         }
     }
 }
