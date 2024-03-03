@@ -1,5 +1,4 @@
-﻿using CartAPI.Models;
-using CartAPI.Services.Interfaces;
+﻿using CartAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CartAPI.Controllers
@@ -18,36 +17,18 @@ namespace CartAPI.Controllers
 
         //add cart item
         [HttpPost("AddCartItem")]
-        public IActionResult AddcartItem(Cart cartItem)
+        public IActionResult AddcartItem(int id, int quantity, string phoneNumber)
         {
-            _cartService.AddCartItem(cartItem);
-            return Ok(cartItem);
+            _cartService.AddCartItem(id, quantity, phoneNumber);
+            return Ok("Item added to cart");
         }
 
         //remove cart item
         [HttpDelete("DeleteCartItem/{id}")]
         public IActionResult DeleteCartItem(int itemId)
         {
-            var cartItem = _cartService.GetCartItem(itemId);
-            if (cartItem == null)
-            {
-                return NotFound();
-            }
-
             _cartService.RemoveCartItem(itemId);
             return Ok("Cart Item Removed");
-        }
-
-        //get cart item
-        [HttpGet("GetCartItem/{id}")]
-        public IActionResult GetCartItem(int itemId)
-        {
-            var cartItem = _cartService.GetCartItem(itemId);
-            if ( cartItem == null)
-            {
-                return NotFound();
-            }
-            return Ok(cartItem);
         }
 
         //list cart items
