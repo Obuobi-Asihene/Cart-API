@@ -10,10 +10,14 @@ namespace CartAPI.Data
         }
 
         public DbSet<Cart> Carts { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cart>();
+            modelBuilder.Entity<Cart>()
+                .HasOne(c => c.Item)
+                .WithOne(i => i.Cart)
+                .HasForeignKey<Cart>(c => c.ItemId);
         }
     }
 }
