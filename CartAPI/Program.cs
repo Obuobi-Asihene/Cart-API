@@ -16,6 +16,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<CartDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<ICartFilterService, CartFIlterService>();
+builder.Services.AddScoped<IItemService, ItemService>();
 
 var app = builder.Build();
 
