@@ -13,18 +13,27 @@ namespace CartAPI.Services
         }
         public void AddCartItem(int itemId, int quantity, string phoneNumber)
         {
+            var existingCartItem = _cartDbContext.Carts.FirstOrDefault(c => c.ItemId == itemId);
             var item = _cartDbContext.Items.Find(itemId);
+
             if (item != null)
             {
-                var cartItem = new Cart
+                if (existingCartItem != null)
                 {
-                    ItemId = itemId,
-                    ItemName = item.Name,
-                    Quantity = quantity,
-                    UnitPrice = item.Price,
-                    PhoneNumber = phoneNumber
+                    existingCartItem.Quantity += quantity;
+                }
+                else
+                {
+                    var cartItem = new Cart
+                    {
+                        ItemId = itemId,
+                        ItemName = item.Name,
+                        Quantity = quantity,
+                        UnitPrice = item.Price,
+                        PhoneNumber = phoneNumber
+                    };
+                    _cartDbContext.Carts.Add(cartItem);
                 };
-                _cartDbContext.Carts.Add(cartItem);
                 _cartDbContext.SaveChanges();
             }
         }
