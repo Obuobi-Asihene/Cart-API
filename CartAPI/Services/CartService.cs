@@ -11,37 +11,33 @@ namespace CartAPI.Services
         {
             _cartDbContext = cartDbContext;
         }
-        public void AddCartItem(Cart item)
+        public void AddCartItem(int itemId, int quantity, string phoneNumber)
         {
-            var existingItem = _cartDbContext.Carts.FirstOrDefault(c => c.ItemId == item.ItemId);
-            if (existingItem != null)
+            var item = _cartDbContext.Items.Find(itemId);
+            if (item != null)
             {
-                existingItem.Quantity += item.Quantity;
-                _cartDbContext.Carts.Update(existingItem);
+                var cartItem = new Cart
+                {
+                    ItemId = itemId,
+                    ItemName = item.Name,
+                    Quantity = quantity,
+                    UnitPrice = item.Price,
+                    PhoneNumber = phoneNumber
+                };
+                _cartDbContext.Carts.Add(cartItem);
+                _cartDbContext.SaveChanges();
             }
-            else
-            {
-                _cartDbContext.Carts.Add(item);
-
-            }
-            _cartDbContext.SaveChanges();
         }
 
         public void RemoveCartItem(int itemId)
         {
-            var cartItem = _cartDbContext.Carts.Find(itemId);
-            if (itemId != null)
+            var cartItem = _cartDbContext.Carts.FirstOrDefault(c => c.ItemId == itemId);
+            if (cartItem != null)
             {
                 _cartDbContext.Carts.Remove(cartItem);
                 _cartDbContext.SaveChanges();
             }
         }
-
-        public Cart GetCartItem(int itemId)
-        {
-            return _cartDbContext.Carts.Find(itemId);
-        }
-
         public IEnumerable<Cart> ListCartItems()
         {
             return _cartDbContext.Carts.ToList();
