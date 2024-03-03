@@ -10,7 +10,5 @@ namespace CartAPI.Models
         public int Quantity {  get; set; }
         public decimal UnitPrice {  get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-        public Item Item { get; set; }
     }
 }
