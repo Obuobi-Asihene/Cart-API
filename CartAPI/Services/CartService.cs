@@ -13,7 +13,7 @@ namespace CartAPI.Services
         }
         public void AddCartItem(int itemId, int quantity, string phoneNumber)
         {
-            var existingCartItem = _cartDbContext.Carts.FirstOrDefault(c => c.ItemId == itemId);
+            var existingCartItem = _cartDbContext.Carts.FirstOrDefault(c => c.ItemId == itemId && c.PhoneNumber == phoneNumber);
             var item = _cartDbContext.Items.Find(itemId);
 
             if (item != null)
